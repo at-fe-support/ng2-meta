@@ -30,7 +30,10 @@ var MetaService = (function () {
             .filter(function (event) { return (event instanceof router_1.NavigationEnd); })
             .map(function () { return _this._findLastChild(_this.activatedRoute); })
             .subscribe(function (routeData) {
-            _this._updateMetaTags(routeData.meta);
+            if (routeData['meta']) {
+                _this._updateMetaTags(routeData.meta);
+            }
+            ;
         });
     }
     MetaService.prototype._findLastChild = function (activatedRoute) {

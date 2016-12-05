@@ -17,7 +17,9 @@ export class MetaService {
       .filter(event => (event instanceof NavigationEnd))
       .map(() => this._findLastChild(this.activatedRoute))
       .subscribe((routeData: any) => {
-        this._updateMetaTags(routeData.meta);
+        if (routeData['meta']) {
+          this._updateMetaTags(routeData.meta)
+        };
       });
   }
 
