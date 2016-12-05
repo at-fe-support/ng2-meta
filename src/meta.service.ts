@@ -33,10 +33,11 @@ export class MetaService {
   }
 
   private _getOrCreateMetaTag(name: string): HTMLElement {
-    let el: HTMLElement = this.document.querySelector(`meta[name='${name}']`);
+    let og: any = name.match('og');
+    let el: HTMLElement = og !== null ? this.document.querySelector(`meta[property='${name}']`) : this.document.querySelector(`meta[name='${name}']`);
     if (!el) {
       el = this.document.createElement('meta');
-      el.setAttribute('name', name);
+      el.setAttribute(og !== null ? 'property' : 'name', name);
       this.document.head.appendChild(el);
     }
     return el;
