@@ -40,3 +40,4 @@ jspm_packages
 !karma.conf.js
 !karma-test-shim.js
 typings
+aot
